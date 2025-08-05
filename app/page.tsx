@@ -3,9 +3,29 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Star, Package, Palette, MessageCircle, Download, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import './globals.css'
 
 export default function HomePage() {
-  const brands = ["OLIVEOIL", "BLUFF", "Yam&Yam", "CHACHA CHAUSSURE", "KLINIK PANDORA", "HAYOOM", "FILOSOFI"]
+
+    const brands = [
+    "/brands/amelia.png",
+    "/brands/bluff-fragrance.png",
+    "/brands/cara-beante.png",
+    "/brands/chacha-charmeur.png",
+    "/brands/eau-de-parfume.png",
+    "/brands/elenia-pangora-parfums.png",
+    "/brands/filoskopi.png",
+    "/brands/fish-oil.png",
+    "/brands/haroem.png",
+    "/brands/hayoon.png",
+    "/brands/hazeemah.png",
+    "/brands/miracle-queen.png",
+    "/brands/olyashine.png",
+    "/brands/paris-de-heiress.png",
+    "/brands/rdm-parfume.png",
+    "/brands/sera.png",
+    "/brands/tiara-jewelry.png",
+  ];
 
   const features = [
     {
@@ -164,13 +184,28 @@ export default function HomePage() {
       <section className="bg-gray-50 py-12">
         <div className="container mx-auto px-4">
           <p className="text-center text-gray-600 mb-8">Dipercaya oleh UMKM:</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
+          <div className="overflow-hidden">
+            <div className="flex flex-nowrap justify-start items-center gap-8 opacity-60 animate-scroll">
+              {brands.map((brand, index) => (
+                <div key={index} className="flex-shrink-0">
+                  <Image
+                    src={brand}
+                    alt={`Brand ${index + 1}`}
+                    width={100}
+                    height={50}
+                    className="object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
             {brands.map((brand, index) => (
               <div key={index} className="text-lg font-semibold text-gray-700">
                 {brand}
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
