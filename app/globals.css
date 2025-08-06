@@ -9,7 +9,8 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: #F2BCBA;
+  --dark-primary: #E89794;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -128,20 +129,38 @@
 
 @keyframes scroll {
   0% {
-    transform: translateX(100%);
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 
 .animate-scroll {
   display: flex;
-    animation: scroll 10s linear infinite;
+  animation: scroll 40s linear infinite;
+  width: calc(200%);
 }
 
 .hover\:pause-scroll:hover {
   animation-play-state: paused;
 }
 
+.flex-nowrap {
+  justify-content: space-between;
+}
+
 /* brands list landing page */
+
+/* swiper */
+
+.swiper-pagination-bullet {
+  background-color: #CCCCCC; /* Warna dot */
+  opacity: 1; /* Pastikan dot terlihat sepenuhnya */
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #1b1b1b; /* Warna dot aktif */
+}
+
+/* swiper */

@@ -1,15 +1,39 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Star, Package, Palette, MessageCircle, Download, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
 import './globals.css'
 
-export default function HomePage() {
+import EditDesainIcon from "@/public/landing-page/edit-desain.svg"
+import CanvaIcon from "@/public/landing-page/canva.svg"
+import BotIcon from "@/public/landing-page/fitur-chatbot.svg"
+import PrintIcon from "@/public/landing-page/cetak-profesional.svg"
 
-    const brands = [
+import EditDesainScreen from "@/public/landing-page/edit-desain-screen.webp"
+import CanvaScreen from "@/public/landing-page/canva-screen.webp"
+import BotScreen from "@/public/landing-page/bot-screen.webp"
+import PrintScreen from "@/public/landing-page/cetak-screen.webp"
+
+export default function HomePage() {
+  const slides = [
+    "/landing-page/testimonial-hero.webp",
+    "/landing-page/testimonial-hero-2.webp", 
+    "/landing-page/testimonial-hero-3.webp",
+    "/landing-page/testimonial-hero-4.webp",
+  ];
+
+  const cardColors = ["bg-[#F1F9F1]", "bg-[#EDEFFA]", "bg-[#FFF8F8]", "bg-[#F7F5ED]"];
+
+  const brands = [
     "/brands/amelia.png",
-    "/brands/bluff-fragrance.png",
+    "/brands/bluff-fragnance.png",
     "/brands/cara-beante.png",
     "/brands/chacha-charmeur.png",
     "/brands/eau-de-parfume.png",
@@ -29,24 +53,28 @@ export default function HomePage() {
 
   const features = [
     {
-      icon: Palette,
-      title: "Edit Desain Sendiri Langsung di Website atau Dibantu Oleh Tim Desain Kami",
-      description: "Editor lengkap dengan Fabric.js untuk kustomisasi penuh",
+      icon: <Image src={EditDesainIcon} alt="Edit Desain Icon" width={24} height={24} />,
+      title: "Edit Desain Sendiri atau Dibantu Oleh Tim Desain Kami",
+      // description: "Editor lengkap dengan Fabric.js untuk kustomisasi penuh",
+      image: <Image src={EditDesainScreen} alt="Edit Desain Screen" width={720} height={720} className="mx-auto"/> 
     },
     {
-      icon: Download,
+      icon: <Image src={CanvaIcon} alt="Edit Desain Icon" width={24} height={24} />,
       title: "Import Desain Dari Canva",
-      description: "Mudah import dan edit desain dari Canva",
+      // description: "Mudah import dan edit desain dari Canva",
+      image: <Image src={CanvaScreen} alt="Edit Desain Screen" width={720} height={720} className="mx-auto"/> 
     },
     {
-      icon: MessageCircle,
+      icon: <Image src={BotIcon} alt="Edit Desain Icon" width={24} height={24} />,
       title: "Fitur Chatbot / AI untuk Bantuan Cepat",
-      description: "Bantuan real-time untuk semua kebutuhan Anda",
+      // description: "Bantuan real-time untuk semua kebutuhan Anda",
+      image: <Image src={BotScreen} alt="Edit Desain Screen" width={720} height={720} className="mx-auto"/> 
     },
     {
-      icon: Package,
+      icon: <Image src={PrintIcon} alt="Edit Desain Icon" width={24} height={24} />,
       title: "Cetak Sedikit, Tetapi Profesional",
-      description: "Mulai dari jumlah kecil dengan kualitas tinggi",
+      // description: "Mulai dari jumlah kecil dengan kualitas tinggi",
+      image: <Image src={PrintScreen} alt="Edit Desain Screen" width={720} height={720} className="mx-auto"/> 
     },
   ]
 
@@ -121,7 +149,7 @@ export default function HomePage() {
               <Button variant="ghost">Login</Button>
             </Link>
             <Link href="/consultation">
-              <Button className="bg-orange-200 text-orange-800 hover:bg-orange-300">Konsultasi Gratis</Button>
+              <Button variant="default">Konsultasi Gratis</Button>
             </Link>
           </div>
         </div>
@@ -131,18 +159,18 @@ export default function HomePage() {
       <section className="container mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl lg:text-5xl font-semibold text-gray-900 mb-6">
               Kemasan Berkualitas,
-              <br />
+              <div className="mb-4"></div>
               Mulai dari Jumlah Kecil
             </h1>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text- text-gray-600 mb-8">
               Solusi cetak kemasan untuk UMKM yang ingin tampil profesional tanpa harus cetak ribuan. Kualitas tetap
               premium, harga tetap bersahabat!
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/templates">
-                <Button size="lg" className="bg-orange-500 hover:bg-orange-600">
+                <Button size="lg" variant="default">
                   Konsultasi Gratis
                 </Button>
               </Link>
@@ -154,58 +182,54 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="bg-gradient-to-br from-orange-100 to-pink-100 rounded-2xl p-8">
-              <div className="bg-white rounded-xl p-6 shadow-lg">
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center">
-                    <Star className="w-5 h-5 text-white fill-current" />
-                  </div>
-                  <div>
-                    <div className="font-semibold">p*****g</div>
-                    <div className="flex text-yellow-400">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-current" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-sm text-gray-600 mb-2">
-                  "Gampang kecewa sama cetak box dulu. 💔💔💔💔💔 • bagus bagus banget dan memang sabar banget!!!
-                  ngadepin yg yg super cerewet kek aku"
-                </p>
-              </div>
+          <div className="">
+                <Swiper
+                  modules={[Autoplay, Pagination]}
+                  autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false,
+                  }}
+                  pagination={{
+                    clickable: true,
+                  }}
+                  loop={true}
+                  className="rounded-lg"
+                >
+                  {slides.map((slide, index) => (
+                    <SwiperSlide key={index}>
+                      <Image
+                        src={slide}
+                        alt={`Testimonial Hero ${index + 1}`}
+                        width={720}
+                        height={400}
+                        className="rounded-lg mx-auto w-full object-cover "
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
             </div>
-          </div>
         </div>
       </section>
 
       {/* Brands Section */}
-      <section className="bg-gray-50 py-12">
+      <section className="py-12">
         <div className="container mx-auto px-4">
           <p className="text-center text-gray-600 mb-8">Dipercaya oleh UMKM:</p>
-          <div className="overflow-hidden">
+          <div className="overflow-hidden relative">
             <div className="flex flex-nowrap justify-start items-center gap-8 opacity-60 animate-scroll">
-              {brands.map((brand, index) => (
+              {[...brands, ...brands].map((brand, index) => (
                 <div key={index} className="flex-shrink-0">
                   <Image
                     src={brand}
                     alt={`Brand ${index + 1}`}
-                    width={100}
-                    height={50}
+                    width={80}
+                    height={30}
                     className="object-contain"
                   />
                 </div>
               ))}
             </div>
           </div>
-          {/* <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-            {brands.map((brand, index) => (
-              <div key={index} className="text-lg font-semibold text-gray-700">
-                {brand}
-              </div>
-            ))}
-          </div> */}
         </div>
       </section>
 
@@ -213,15 +237,20 @@ export default function HomePage() {
       <section className="container mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
+            <Card key={index} className={`p-6 ${cardColors[index % cardColors.length]}`}>
               <CardContent className="p-0">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <feature.icon className="w-6 h-6 text-orange-600" />
+                <div className="flex flex-col items-start space-x-4">
+                  <div className="flex flex-row items-center gap-4">  
+                    <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">  
+                      <Image src={feature.icon.props.src} alt={feature.icon.props.alt} width={32} height={32} className="mx-auto"/>  
+                    </div>  
+                    <div className="flex items-center">  
+                      <h3 className="font-medium text-lg mb-2">{feature.title}</h3>  
+                      {/* <p className="text-gray-600">{feature.description}</p> */}  
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                  <div className="mt-8 ew">
+                    <Image src={feature.image.props.src} alt={feature.icon.props.alt} width={720} height={720} className="mx-auto"/>  
                   </div>
                 </div>
               </CardContent>
@@ -229,9 +258,13 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+      
+      <section className="container mx-auto px-4 py-16">
+
+      </section>
 
       {/* Testimonial Section */}
-      <section className="bg-gray-50 py-16">
+      {/* <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -260,7 +293,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Process Section */}
       <section className="container mx-auto px-4 py-16">
